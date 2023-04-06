@@ -28,6 +28,15 @@ namespace environment {
          * Generates piece data
          */
         static void init();
+
+        /**
+         * Converts given piece to a flat vector
+         *
+         * @param pieceId Piece id
+         * @param rotation Rotation of the piece
+         * @return Piece as a flat vector
+         */
+        static vector<int> pieceToFlatVector(int pieceId, int rotation);
     private:
         /**
          * Stores generated piece masks

@@ -122,6 +122,30 @@ namespace environment {
     }
 
     /**
+     * Converts given piece to a flat vector
+     *
+     * @param pieceId Piece id
+     * @param rotation Rotation of the piece
+     * @return Piece as a flat vector
+     */
+    vector<int> piece::pieceToFlatVector(int pieceId, int rotation) {
+        vector<int> pieceFlatVector = {};
+
+        vector<vector<int>> pieceVector = getPieceVector(pieceId);
+        for (int i = 0; i < rotation; i++){
+            pieceVector = rotatePieceVector(pieceVector);
+        }
+
+        for (ulong x = 0; x < 3; x++){
+            for (ulong y = 0; y < 3; y++){
+                pieceFlatVector.push_back(pieceVector[x][y]);
+            }
+        }
+
+        return pieceFlatVector;
+    }
+
+    /**
      * Converts the given piece to a bit mask
      *
      * @param piece Piece to convert
