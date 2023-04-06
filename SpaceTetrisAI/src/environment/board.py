@@ -23,11 +23,22 @@ class Board:
         Checks if the given piece can be played at given place (x, y)
 
         :param piece_mask: Bitboard mask representation of the piece to check
-        :param x: X/Column in of the piece center
-        :param y: Y/Row in of the piece center
+        :param x: X/Column of piece center
+        :param y: Y/Row of piece center
         :return: Return True if the piece can be place in specified position, False otherwise
         """
-        return (self.__board & (piece_mask << ((1 + x) + (1 + y)*7))) == 0
+        return (self.__board & (piece_mask << (x + y*7))) == 0
+
+    def play_piece(self, piece_mask: int, x: int, y: int) -> None:
+        """
+        Play given piece at given place (x, y) without checking if it's allowed, call can_play_piece to check it
+        the piece can be played without any collisions.
+
+        :param piece_mask: Bitboard mask representation of the piece to play
+        :param x: X/Column of piece center
+        :param y: Y/Row of piece center
+        """
+        self.__board |= (piece_mask << (x + y*7))
 
     def clear_lines(self) -> int:
         """
