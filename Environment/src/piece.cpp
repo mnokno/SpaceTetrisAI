@@ -11,11 +11,16 @@ namespace environment {
         return 0;
     }
 
+    /**
+     * Generates piece data
+     */
     void piece::init() {
         for (int i = 0; i < 16; i++){
             vector<vector<int>> p = getPieceVector(i);
+            piece::pieces[i][0] = pieceVectorToUlong(p);
             for (int j = 0; j < 3; j++){
                 p = rotatePieceVector(p);
+                piece::pieces[i][j + 1] = pieceVectorToUlong(p);
             }
         }
     }

@@ -16,6 +16,10 @@ namespace environment {
     class piece {
     public:
         static ulong getPiece(int pieceId, int rotation);
+
+        /**
+         * Generates piece data
+         */
         static void init();
     private:
         /**
