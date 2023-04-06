@@ -3,8 +3,10 @@ class Piece:
     Collection of utilities regarding game pieces.
     """
 
-    # Stores generated piece data
     __pieces: [[int]] = [[0] * 4 for _ in range(15)]
+    """
+    Stores generated piece data
+    """
 
     @staticmethod
     def get_piece_bitmask(piece_id: int, rotation: int):
