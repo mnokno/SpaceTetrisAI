@@ -114,6 +114,26 @@ class Game:
         """
         self.__piece_main = (self.__piece_main[0], ((self.__piece_main[1] + 1) % 3))
 
+    def cant_play(self) -> None:
+        """
+        Should be called when you don't want to play a piece or can't play a piece,
+        will also loos a life, reset multiple and discard current piece with new piece
+        """
+        self.__historicData.append((
+            self.__board.get_board(),
+            self.__piece_main,
+            self.__piece_alt,
+            self.__lives,
+            self.__score,
+            self.__multiplier
+        ))
+
+        self.__piece_main = self.__piece_alt
+        self.__piece_alt = self.__pieceGenerator.get_piece(len(self.__historicData) + 1)
+
+        self.__lives -= 1
+        self.__multiplier = 1
+
     def get_board(self) -> Board:
         """
         Getter for board
