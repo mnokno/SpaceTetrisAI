@@ -1,5 +1,5 @@
-from src.environment.piece import Piece
 from random import randint
+
 
 class PieceGenerator:
     """
@@ -7,12 +7,12 @@ class PieceGenerator:
     pieces do not change after backtracking
     """
 
-    __history: [int] = []
+    __history: [(int, int)] = []
     """
     Stores previously generated pieces
     """
 
-    def get_piece(self, time_stamp: int) -> int:
+    def get_piece(self, time_stamp: int) -> (int, int):
         """
         Returns a new piece mask repointing to the given time_stamp
 
@@ -21,7 +21,7 @@ class PieceGenerator:
         """
 
         while not time_stamp < len(self.__history):
-            self.__history.append(Piece.get_piece_bitmask(randint(0, 14), randint(0, 3)))
+            self.__history.append((randint(0, 14), randint(0, 3)))
 
         if time_stamp < len(self.__history):
             return self.__history[time_stamp]
