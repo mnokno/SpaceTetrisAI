@@ -19,8 +19,13 @@ namespace enviroment {
         static void init();
     private:
         inline static ulong pieces[16][4];
-        static vector<bool> getPieceVector(int i);
-        static vector<bool> rotatePieceVector(const vector<bool>& piece);
+        /**
+         * Returns piece i, 0 <= i <= 15
+         * @param i Piece number
+         * @return Piece
+         */
+        static vector<vector<int>> getPieceVector(int i);
+        static vector<vector<int>> rotatePieceVector(const vector<vector<int>>& piece);
     };
 
 } // enviroment
