@@ -9,7 +9,7 @@ class Game:
     provides implementation for scoring and efficient backtracking.
     """
 
-    __historicData: [(int, int, int, int, int, int)] = []
+    __historicData: [(int, (int, int), (int, int), int, int, int)] = []
     """
     Stores historic data required to backtrack in a stack in the following order
     (board_bitboard, piece_main, piece_alt, lives, score, multiplayer)
@@ -25,14 +25,14 @@ class Game:
     Stores board
     """
 
-    __piece_main: int
+    __piece_main: (int, int)
     """
-    Stores maks for the main piece
+    Stores maks for the main piece (piece_id, piece_rotation)
     """
 
-    __piece_alt: int
+    __piece_alt: (int, int)
     """
-    Stores mask for the alternative piece
+    Stores mask for the alternative piece (piece_id, piece_rotation)
     """
 
     __lives: int
@@ -70,7 +70,7 @@ class Game:
         :param y: Y position, has to be between 0 and 4
         """
 
-        if not self.__board.can_play_piece(self.__piece_main, x, y):
+        if not self.__board.can_play_piece(Piece.get_piece_bitmask(self.__piece_main[0], self.__piece_main[1]), x, y):
             raise Exception("Illegal piece play attempted!")
 
         self.__historicData.append((
@@ -82,7 +82,7 @@ class Game:
             self.__multiplier
         ))
 
-        self.__board.play_piece(self.__piece_main, x, y)
+        self.__board.play_piece(Piece.get_piece_bitmask(self.__piece_main[0], self.__piece_main[1]), x, y)
         cleared_blocks, cleared_lines = self.__board.clear_lines()
 
         self.__piece_main = self.__piece_alt
@@ -115,14 +115,14 @@ class Game:
         """
         return self.__board
 
-    def get_main_piece(self) -> int:
+    def get_main_piece(self) -> (int, int):
         """
         Getter for main piece
         :return: main piece
         """
         return self.__piece_main
 
-    def get_alt_piece(self) -> int:
+    def get_alt_piece(self) -> (int, int):
         """
         Getter for alternative piece
         :return: alternative piece
