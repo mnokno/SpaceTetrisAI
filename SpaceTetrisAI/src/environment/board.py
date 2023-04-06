@@ -40,11 +40,11 @@ class Board:
         """
         self.__board |= (piece_mask << (x + y*7))
 
-    def clear_lines(self) -> int:
+    def clear_lines(self) -> (int, int):
         """
         Clears all vertical and horizontal lines
 
-        :return: Returns number of blocks cleared
+        :return: Returns number of blocks cleared, Number of lines cleared
         """
 
         rows_to_clear = []
@@ -61,7 +61,8 @@ class Board:
         for i in columns_to_clear:
             self.__board &= ~PrecalculatedData.columnBitmasks[i]
 
-        return (len(rows_to_clear) + len(columns_to_clear)) * 5 - len(rows_to_clear) * len(columns_to_clear)
+        return ((len(rows_to_clear) + len(columns_to_clear)) * 5 - len(rows_to_clear) * len(columns_to_clear),
+                (len(rows_to_clear) + len(columns_to_clear)))
 
     def get_board(self) -> int:
         """
