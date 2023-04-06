@@ -1,6 +1,0 @@
-#ifndef ENVOROMENT_LIBRARY_H
-#define ENVOROMENT_LIBRARY_H
-
-void hello();
-
-#endif //ENVOROMENT_LIBRARY_H
