@@ -64,3 +64,4 @@ class PrecalculatedData:
         for row in PrecalculatedData.rowBitmasks:
             mask |= row
         PrecalculatedData.boardBitmask = mask
+        
