@@ -1,5 +1,6 @@
 #include <iostream>
 #include "src/types.h"
+#include "src/piece.h"
 
 using namespace environment;
 

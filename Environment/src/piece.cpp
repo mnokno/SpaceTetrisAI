@@ -4,7 +4,7 @@
 
 #include "piece.h"
 
-namespace enviroment {
+namespace environment {
 
 
     ulong piece::getPiece(int pieceId, int rotation) {
@@ -12,11 +12,17 @@ namespace enviroment {
     }
 
     void piece::init() {
-
+        for (int i = 0; i < 16; i++){
+            vector<vector<int>> p = getPieceVector(i);
+            for (int j = 0; j < 3; j++){
+                p = rotatePieceVector(p);
+            }
+        }
     }
 
     /**
      * Returns piece i, 0 <= i <= 15
+     *
      * @param i Piece number
      * @return Piece
      */
@@ -104,8 +110,26 @@ namespace enviroment {
         }
     }
 
+    /**
+     * Creates a new copy of the rotated piece
+     *
+     * @param piece Piece to rotated
+     * @return New rotated piece
+     */
     vector<vector<int>> piece::rotatePieceVector(const vector<vector<int>>& piece) {
-        return {};
+        vector<vector<int>> blocks = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+        blocks[2][0] = piece[0][0];
+        blocks[1][0] = piece[0][1];
+        blocks[0][0] = piece[0][2];
+
+        blocks[2][1] = piece[1][0];
+        blocks[1][1] = piece[1][1];
+        blocks[0][1] = piece[1][2];
+
+        blocks[2][2] = piece[2][0];
+        blocks[1][2] = piece[2][1];
+        blocks[0][2] = piece[2][2];
+        return blocks;
     }
 
 } // enviroment
