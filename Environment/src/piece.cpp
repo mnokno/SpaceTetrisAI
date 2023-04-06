@@ -21,7 +21,7 @@ namespace environment {
      * Generates piece data
      */
     void piece::init() {
-        for (int i = 0; i < 16; i++){
+        for (int i = 0; i < 15; i++){
             vector<vector<int>> p = getPieceVector(i);
             piece::pieces[i][0] = pieceVectorToUlong(p);
             for (int j = 0; j < 3; j++){
@@ -32,7 +32,7 @@ namespace environment {
     }
 
     /**
-     * Returns piece i, 0 <= i <= 15
+     * Returns piece i, 0 <= i <= 14
      *
      * @param i Piece number
      * @return Piece

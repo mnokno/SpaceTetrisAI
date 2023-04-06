@@ -32,10 +32,10 @@ namespace environment {
         /**
          * Stores generated piece masks
          */
-        inline static ulong pieces[16][4];
+        inline static ulong pieces[15][4];
 
         /**
-         * Returns piece i, 0 <= i <= 15
+         * Returns piece i, 0 <= i <= 14
          *
          * @param i Piece number
          * @return Piece
