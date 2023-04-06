@@ -108,6 +108,12 @@ class Game:
             = self.__historicData.pop()
         self.__board.set_board(board)
 
+    def rotate_piece(self) -> None:
+        """
+        Rotate the main piece
+        """
+        self.__piece_main = (self.__piece_main[0], ((self.__piece_main[1] + 1) % 3))
+
     def get_board(self) -> Board:
         """
         Getter for board
