@@ -1,4 +1,4 @@
-from precalculated_data import PrecalculatedData
+from src.environment.precalculated_data import PrecalculatedData
 
 
 class Board:
