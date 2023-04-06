@@ -1,5 +1,6 @@
 from src.environment.piece import Piece
 from src.environment.board import Board
+from src.environment.piece_generator import PieceGenerator
 
 
 class Game:
@@ -12,6 +13,11 @@ class Game:
     """
     Stores historic data required to backtrack in a stack in the following order
     (board_bitboard, piece_main, piece_alt, lives, score, multiplayer)
+    """
+
+    __pieceGenerator: PieceGenerator
+    """
+    Stores piece generator object used for piece generation
     """
 
     __board: Board
@@ -48,9 +54,10 @@ class Game:
         """
         Creates new fresh board
         """
+        self.__pieceGenerator = PieceGenerator()
         self.__board = Board()
-        #TODO self.__piece_main =
-        #TODO self.__piece_alt =
+        self.__piece_main = self.__pieceGenerator.get_piece(len(self.__historicData))
+        self.__piece_alt = self.__pieceGenerator.get_piece(len(self.__historicData) + 1)
         self.__lives = 3
         self.__score = 0
         self.__multiplayer = 1
