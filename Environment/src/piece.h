@@ -38,6 +38,14 @@ namespace environment {
          * @return New rotated piece
          */
         static vector<vector<int>> rotatePieceVector(const vector<vector<int>>& piece);
+
+        /**
+         * Converts the given piece to a bit mask
+         *
+         * @param piece Piece to convert
+         * @return Bitmask
+         */
+        static ulong pieceVectorToUlong(const vector<vector<int>>& piece);
     };
 
 } // enviroment

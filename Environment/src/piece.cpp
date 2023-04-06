@@ -111,6 +111,24 @@ namespace environment {
     }
 
     /**
+     * Converts the given piece to a bit mask
+     *
+     * @param piece Piece to convert
+     * @return Bitmask
+     */
+    ulong piece::pieceVectorToUlong(const vector<vector<int>> &piece) {
+        ulong mask = 0;
+        for (ulong x = 0; x < 3; x++){
+            for (ulong y = 0; y < 3; y++){
+                if (piece[x][y] == 1){
+                    mask |= ((ulong)1) << (x + y * 7);
+                }
+            }
+        }
+        return mask;
+    }
+
+    /**
      * Creates a new copy of the rotated piece
      *
      * @param piece Piece to rotated
