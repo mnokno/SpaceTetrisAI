@@ -15,6 +15,13 @@ namespace environment {
 
     class piece {
     public:
+        /**
+         * Returns bit mask for a given piece located at the very bottom of the bitboard
+         *
+         * @param pieceId Piece id
+         * @param rotation Rotation of the piece
+         * @return Bit mask for the requested piece
+         */
         static ulong getPiece(int pieceId, int rotation);
 
         /**
