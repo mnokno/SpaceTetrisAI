@@ -4,10 +4,10 @@ class Piece:
     """
 
     # Stores generated piece data
-    pieces: [[int]] = [[0] * 4 for _ in range(15)]
+    __pieces: [[int]] = [[0] * 4 for _ in range(15)]
 
     @staticmethod
-    def get_piece(piece_id: int, rotation: int):
+    def get_piece_bitmask(piece_id: int, rotation: int):
         """
         Returns bitmask for a given piece located at the very bottom of the bitboard.
 
@@ -15,37 +15,10 @@ class Piece:
         :param rotation: Rotation of the piece
         :return: Bitmask corresponding to the piece
         """
-        return Piece.pieces[piece_id][rotation]
+        return Piece.__pieces[piece_id][rotation]
 
     @staticmethod
-    def init() -> None:
-        """
-        Generates piece data, should be called before any other piece utilitea are used.
-        """
-        for i in range(15):
-            p = Piece.get_piece_vector(i)
-            Piece.pieces[i][0] = Piece.piece_vector_to_ulong(p)
-            for j in range(3):
-                p = Piece.rotate_piece_vector(p)
-                Piece.pieces[i][j + 1] = Piece.piece_vector_to_ulong(p)
-
-    @staticmethod
-    def piece_vector_to_ulong(piece: [[int]]) -> int:
-        """
-        Converts the given piece vector to a bitmask.
-
-        :param piece: Piece to convert to a bitmask
-        :return: Bitmask of the given piece
-        """
-        mask = 0
-        for x in range(3):
-            for y in range(3):
-                if piece[x][y] == 1:
-                    mask |= (1 << (x + y * 7))
-        return mask
-
-    @staticmethod
-    def piece_to_flat_vector(piece_id: int, rotation: int):
+    def get_flat_piece_vector(piece_id: int, rotation: int):
         """
         Converts given piece to a flat vector/list.
 
@@ -55,9 +28,9 @@ class Piece:
         """
         piece_flat = []
 
-        piece_vector = Piece.get_piece_vector(piece_id)
+        piece_vector = Piece.__get_piece_vector(piece_id)
         for i in range(rotation):
-            piece_vector = Piece.rotate_piece_vector(piece_vector)
+            piece_vector = Piece.__rotate_piece_vector(piece_vector)
 
         for x in range(3):
             for y in range(3):
@@ -66,7 +39,19 @@ class Piece:
         return piece_flat
 
     @staticmethod
-    def get_piece_vector(i: int) -> [[int]]:
+    def init() -> None:
+        """
+        Generates piece data, should be called before any other piece utilitea are used.
+        """
+        for i in range(15):
+            p = Piece.__get_piece_vector(i)
+            Piece.__pieces[i][0] = Piece.__piece_vector_to_ulong(p)
+            for j in range(3):
+                p = Piece.__rotate_piece_vector(p)
+                Piece.__pieces[i][j + 1] = Piece.__piece_vector_to_ulong(p)
+
+    @staticmethod
+    def __get_piece_vector(i: int) -> [[int]]:
         """
         Returns piece with given id i, 0 <= i <= 14.
 
@@ -122,7 +107,22 @@ class Piece:
             return [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
     @staticmethod
-    def rotate_piece_vector(piece: [[int]]) -> [[int]]:
+    def __piece_vector_to_ulong(piece: [[int]]) -> int:
+        """
+        Converts the given piece vector to a bitmask.
+
+        :param piece: Piece to convert to a bitmask
+        :return: Bitmask of the given piece
+        """
+        mask = 0
+        for x in range(3):
+            for y in range(3):
+                if piece[x][y] == 1:
+                    mask |= (1 << (x + y * 7))
+        return mask
+
+    @staticmethod
+    def __rotate_piece_vector(piece: [[int]]) -> [[int]]:
         """
         Rotates a 3x3 piece vector clockwise.
 
