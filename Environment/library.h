@@ -1,6 +1,0 @@
-#ifndef ENVIRONMENT_LIBRARY_H
-#define ENVIRONMENT_LIBRARY_H
-
-void hello();
-
-#endif //ENVIRONMENT_LIBRARY_H

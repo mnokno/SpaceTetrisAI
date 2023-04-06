@@ -12,7 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0da5af4c-bf5f-4512-a26c-348a70caf534" name="Changes" comment="" />
+    <list default="true" id="a24933ae-8df7-451f-b2d1-01e03d569822" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +26,7 @@
     <option name="majorVersion" value="2022" />
     <option name="minorVersion" value="2.4" />
   </component>
-  <component name="ProjectId" id="2O3WSaL7GUZZ3jI9yQ4U5HlJJUr" />
+  <component name="ProjectId" id="2O3X79kBWly8Q12S3lkffmiNzgX" />
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -41,7 +41,7 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Environment" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Environment" TARGET_NAME="Environment" CONFIG_NAME="Debug">
+    <configuration name="Environment" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Environment" TARGET_NAME="Environment" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Environment" RUN_TARGET_NAME="Environment">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -50,11 +50,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0da5af4c-bf5f-4512-a26c-348a70caf534" name="Changes" comment="" />
-      <created>1680789746482</created>
+      <changelist id="a24933ae-8df7-451f-b2d1-01e03d569822" name="Changes" comment="" />
+      <created>1680790068873</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1680789746482</updated>
+      <updated>1680790068873</updated>
     </task>
     <servers />
   </component>

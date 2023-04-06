@@ -3,4 +3,4 @@ project(Environment)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_library(Environment library.cpp)
+add_executable(Environment main.cpp)
