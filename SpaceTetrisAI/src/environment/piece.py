@@ -9,7 +9,7 @@ class Piece:
     """
 
     @staticmethod
-    def get_piece_bitmask(piece_id: int, rotation: int):
+    def get_piece_bitmask(piece_id: int, rotation: int) -> int:
         """
         Returns bitmask for a given piece located at the very bottom of the bitboard.
 
@@ -20,7 +20,7 @@ class Piece:
         return Piece.__pieces[piece_id][rotation]
 
     @staticmethod
-    def get_flat_piece_vector(piece_id: int, rotation: int):
+    def get_flat_piece_vector(piece_id: int, rotation: int) -> [int]:
         """
         Converts given piece to a flat vector/list.
 
