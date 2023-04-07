@@ -114,7 +114,7 @@ class Game:
         """
         Rotate the main piece
         """
-        self.__piece_main = (self.__piece_main[0], ((self.__piece_main[1] + 1) % 3))
+        self.__piece_main = (self.__piece_main[0], ((self.__piece_main[1] + 1) % 4))
 
     def cant_play(self) -> None:
         """
