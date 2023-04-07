@@ -31,9 +31,10 @@ def score_agent(agent: Agent, game: Game, max_steps: int = 500) -> int:
                 for y in range(5):
                     if game.get_board().can_play_piece(piece, x, y):
                         game.place_piece(x, y)
-                        score = game.get_score() + agent.score(
+                        score = agent.score(
                             game.get_board().get_flat_board_vector(),
                             Piece.get_flat_piece_vector(game.get_alt_piece()[0], game.get_alt_piece()[1]),
+                            game.get_score(),
                             game.get_multiplayer()
                         )
                         game.backtrack()
@@ -53,9 +54,10 @@ def score_agent(agent: Agent, game: Game, max_steps: int = 500) -> int:
                 for y in range(5):
                     if game.get_board().can_play_piece(piece, x, y):
                         game.place_piece(x, y)
-                        score = game.get_score() + agent.score(
+                        score = agent.score(
                             game.get_board().get_flat_board_vector(),
                             Piece.get_flat_piece_vector(game.get_alt_piece()[0], game.get_alt_piece()[1]),
+                            game.get_score(),
                             game.get_multiplayer()
                         )
                         game.backtrack()
