@@ -1,14 +1,5 @@
-from src.environment.piece_generator import PieceGenerator
-from src.environment.piece import Piece
-from src.environment.precalculated_data import PrecalculatedData
-from src.environment.board import Board
-from src.environment.game import Game
-from src.environment.evaluator import score_agent
-from src.agents.agent import Agent
-from src.agents.null_agent import NullAgent
-from src.agents.random_agent import RandomAgent
-from src.agents.noise_null_agent import NoiseNullAgent
-from src.agents.smart_agent import SmartAgent
+from environment import *
+from agents import *
 
 
 def format_board(number):
@@ -25,9 +16,6 @@ def format_board(number):
 
 
 if __name__ == '__main__':
-    Piece.init()
-    PrecalculatedData.init()
-
     agentR: Agent = RandomAgent()
     agentNN: Agent = NoiseNullAgent(noise=10)
     agentN: Agent = NullAgent()
