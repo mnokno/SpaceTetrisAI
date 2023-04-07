@@ -37,11 +37,8 @@ if __name__ == '__main__':
         pg: PieceGenerator = PieceGenerator()
         pg.get_piece(500)
 
-        game: Game = Game(piece_generator=PieceGenerator(history=pg.get_history()))
-        agentR_score += score_agent(agentR, game)
-
-        game: Game = Game(piece_generator=PieceGenerator(history=pg.get_history()))
-        agentN_score += score_agent(agentN, game)
+        agentR_score += score_agent(agentR, Game(PieceGenerator(history=pg.get_history())))
+        agentN_score += score_agent(agentN, Game(PieceGenerator(history=pg.get_history())))
 
     print("Average scores over " + str(test_game) + " games")
     print("Random agent:\t", float(agentR_score) / float(test_game))
