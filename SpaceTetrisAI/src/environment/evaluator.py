@@ -19,7 +19,7 @@ def score_agent(agent: Agent, game: Game, max_steps: int = 500) -> int:
             break
 
         bets_play = types.SimpleNamespace()
-        bets_play.score = -1
+        bets_play.score = -99999
         bets_play.x = -1
         bets_play.y = -1
         bets_play.rotation = 0
