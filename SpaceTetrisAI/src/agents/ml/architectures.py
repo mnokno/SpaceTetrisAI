@@ -9,19 +9,19 @@ class SimpleNet(nn.Module):
 
         self.sequential = nn.Sequential(
             # board5x5=25 piece3x3=9 total=34
-            nn.Linear(in_features=34, out_features=1000),
+            nn.Linear(in_features=34, out_features=250),
             nn.Tanh(),
-            nn.Dropout(0.2),
+            # nn.Dropout(0.2),
 
-            nn.Linear(in_features=1000, out_features=10000),
+            nn.Linear(in_features=250, out_features=1000),
             nn.Tanh(),
-            nn.Dropout(0.2),
+            # nn.Dropout(0.2),
 
-            nn.Linear(in_features=10000, out_features=1000),
+            nn.Linear(in_features=1000, out_features=100),
             nn.ReLU(),
-            nn.Dropout(0.2),
+            # nn.Dropout(0.2),
 
-            nn.Linear(in_features=1000, out_features=1),
+            nn.Linear(in_features=100, out_features=1),
             nn.Sigmoid()
         )
 
