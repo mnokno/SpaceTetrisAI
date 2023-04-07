@@ -1,7 +1,7 @@
 import abc
 
 
-class Agent(abc.ABCMeta):
+class Agent:
     """
     Agent interface, used as a template for other agents.
     """
