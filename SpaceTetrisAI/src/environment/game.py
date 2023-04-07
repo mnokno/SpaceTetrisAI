@@ -50,7 +50,7 @@ class Game:
     Stores multiplier
     """
 
-    def __init__(self, piece_generator: PieceGenerator = PieceGenerator()):
+    def __init__(self, piece_generator: PieceGenerator):
         """
         Creates new fresh board
 
