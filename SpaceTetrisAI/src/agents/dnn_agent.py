@@ -26,6 +26,8 @@ class DNNAgent(Agent):
 
         # convert the board and left piece into a single tensor
         input_tensor = torch.tensor(board + left_piece, dtype=torch.float32).unsqueeze(0)
+        if next(self.__barin.parameters()).is_cuda:
+            input_tensor.cuda()
 
         return objective_score + self.__barin.forward(input_tensor) * 1000
 
