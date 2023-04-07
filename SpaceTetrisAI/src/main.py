@@ -8,6 +8,7 @@ from src.agents.agent import Agent
 from src.agents.null_agent import NullAgent
 from src.agents.random_agent import RandomAgent
 from src.agents.noise_null_agent import NoiseNullAgent
+from src.agents.smart_agent import SmartAgent
 
 
 def format_board(number):
@@ -30,10 +31,12 @@ if __name__ == '__main__':
     agentR: Agent = RandomAgent()
     agentNN: Agent = NoiseNullAgent(noise=10)
     agentN: Agent = NullAgent()
+    agentS: Agent = SmartAgent()
 
     agentR_score = 0
     agentNN_score = 0
     agentN_score = 0
+    agentS_score = 0
 
     test_game = 100
     for i in range(test_game):
@@ -43,8 +46,10 @@ if __name__ == '__main__':
         agentR_score += score_agent(agentR, Game(PieceGenerator(history=pg.get_history())))
         agentNN_score += score_agent(agentNN, Game(PieceGenerator(history=pg.get_history())))
         agentN_score += score_agent(agentN, Game(PieceGenerator(history=pg.get_history())))
+        agentS_score += score_agent(agentS, Game(PieceGenerator(history=pg.get_history())))
 
     print("Average scores over " + str(test_game) + " games")
     print("Random agent:\t\t", float(agentR_score) / float(test_game))
     print("Noise Null agent:\t", float(agentNN_score) / float(test_game))
     print("Null agent:\t\t\t", float(agentN_score) / float(test_game))
+    print("Smart agent:\t\t", float(agentS_score) / float(test_game))
