@@ -50,11 +50,13 @@ class Game:
     Stores multiplier
     """
 
-    def __init__(self):
+    def __init__(self, piece_generator: PieceGenerator = PieceGenerator()):
         """
         Creates new fresh board
+
+        :param piece_generator: Piece generator that will be used for this game
         """
-        self.__pieceGenerator = PieceGenerator()
+        self.__pieceGenerator = piece_generator
         self.__board = Board()
         self.__piece_main = self.__pieceGenerator.get_piece(len(self.__historicData))
         self.__piece_alt = self.__pieceGenerator.get_piece(len(self.__historicData) + 1)
