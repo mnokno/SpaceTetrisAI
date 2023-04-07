@@ -9,53 +9,55 @@ class Game:
     provides implementation for scoring and efficient backtracking.
     """
 
-    __historicData: [(int, (int, int), (int, int), int, int, int)] = []
-    """
-    Stores historic data required to backtrack in a stack in the following order
-    (board_bitboard, piece_main, piece_alt, lives, score, multiplayer)
-    """
-
-    __pieceGenerator: PieceGenerator
-    """
-    Stores piece generator object used for piece generation
-    """
-
-    __board: Board
-    """
-    Stores board
-    """
-
-    __piece_main: (int, int)
-    """
-    Stores maks for the main piece (piece_id, piece_rotation)
-    """
-
-    __piece_alt: (int, int)
-    """
-    Stores mask for the alternative piece (piece_id, piece_rotation)
-    """
-
-    __lives: int
-    """
-    Stores number of lives
-    """
-
-    __score: int
-    """
-    Stores score
-    """
-
-    __multiplier: int
-    """
-    Stores multiplier
-    """
-
     def __init__(self, piece_generator: PieceGenerator):
         """
         Creates new fresh board
 
         :param piece_generator: Piece generator that will be used for this game
         """
+
+        self.__historicData: [(int, (int, int), (int, int), int, int, int)]
+        """
+        Stores historic data required to backtrack in a stack in the following order
+        (board_bitboard, piece_main, piece_alt, lives, score, multiplayer)
+        """
+
+        self.__pieceGenerator: PieceGenerator
+        """
+        Stores piece generator object used for piece generation
+        """
+
+        self.__board: Board
+        """
+        Stores board
+        """
+
+        self.__piece_main: (int, int)
+        """
+        Stores maks for the main piece (piece_id, piece_rotation)
+        """
+
+        self.__piece_alt: (int, int)
+        """
+        Stores mask for the alternative piece (piece_id, piece_rotation)
+        """
+
+        self.__lives: int
+        """
+        Stores number of lives
+        """
+
+        self.__score: int
+        """
+        Stores score
+        """
+
+        self.__multiplier: int
+        """
+        Stores multiplier
+        """
+
+        self.__historicData = []
         self.__pieceGenerator = piece_generator
         self.__board = Board()
         self.__piece_main = self.__pieceGenerator.get_piece(len(self.__historicData))

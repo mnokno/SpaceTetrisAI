@@ -7,15 +7,16 @@ class Board:
     provides utilities to interact with it.
     """
 
-    __board: int
-    """
-    Bitboard representing current board state
-    """
-
     def __init__(self):
         """
         Create a new empty board
         """
+
+        self.__board: int
+        """
+        Bitboard representing current board state
+        """
+
         self.__board = ~PrecalculatedData.boardBitmask
 
     def can_play_piece(self, piece_mask: int, x: int, y: int) -> bool:
