@@ -24,7 +24,8 @@ class PieceGenerator:
         if seed is not None:
             random.seed(seed)
         if history is not None:
-            self.__history = history
+            for e in history:
+                self.__history.append(e)
 
     def get_piece(self, time_stamp: int) -> (int, int):
         """
