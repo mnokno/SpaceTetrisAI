@@ -72,6 +72,20 @@ class Board:
         """
         return self.__board
 
+    def get_flat_board_vector(self) -> [int]:
+        """
+        Gets this board in a flat vector from
+        :return: Flat vector from this board
+        """
+        flat_vector = []
+        for x in range(5):
+            for y in range(5):
+                if self.__board & (1 << ((x + 1) + (y + 1) * 7)) == 0:
+                    flat_vector.append(0)
+                else:
+                    flat_vector.append(1)
+        return flat_vector
+
     def set_board(self, board: int) -> None:
         """
         Setter for bitboard representation of the internal board
