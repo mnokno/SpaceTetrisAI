@@ -3,7 +3,7 @@ from src.agents.agent import Agent
 
 class NullAgent(Agent):
 
-    def score(self, board: [int], left_piece: [int], multiplier: [int]) -> int:
+    def score(self, board: [int], left_piece: [int], multiplier: int) -> int:
         """
         Always scores 0
         :param board: Board state in a flat vector

@@ -7,7 +7,7 @@ class Agent:
     """
 
     @abc.abstractmethod
-    def score(self, board: [int], left_piece: [int], multiplier: [int]) -> int:
+    def score(self, board: [int], left_piece: [int], multiplier: int) -> int:
         """
         Scores the given board based on the board itself, other piece and multiple
         :param board: Board state in a flat vector

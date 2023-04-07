@@ -21,7 +21,7 @@ class RandomAgent(Agent):
         Lower bound for a guess
         """
 
-    def score(self, board: [int], left_piece: [int], multiplier: [int]) -> int:
+    def score(self, board: [int], left_piece: [int], multiplier: int) -> int:
         """
         Returns a random score for this position between lower and upper bound set on initialization
         :param board: Board state in a flat vector
