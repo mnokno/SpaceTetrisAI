@@ -1,3 +1,4 @@
+import random
 from random import randint
 
 
@@ -7,10 +8,23 @@ class PieceGenerator:
     pieces do not change after backtracking
     """
 
-    __history: [(int, int)] = []
-    """
-    Stores previously generated pieces
-    """
+    def __init__(self, seed: int = None, history: [(int, int)] = None):
+        """
+        Creates a new random piece generator
+        :param seed: Optional parameter, seed to be set to random, WARNING random uses a shared instance so seed
+        does not guarantee an output, set history to guarantee an output
+        :param history: a history to be used by this piece generator
+        """
+
+        self.__history: [(int, int)] = []
+        """                               
+        Stores previously generated pieces
+        """
+
+        if seed is not None:
+            random.seed(seed)
+        if history is not None:
+            self.__history = history
 
     def get_piece(self, time_stamp: int) -> (int, int):
         """
@@ -25,3 +39,11 @@ class PieceGenerator:
 
         if time_stamp < len(self.__history):
             return self.__history[time_stamp]
+
+    def get_history(self) -> [(int, int)]:
+        """
+        Getter for history
+        :return: History stack
+        """
+        return self.__history
+    
