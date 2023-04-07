@@ -4,19 +4,14 @@ from random import randint
 
 class RandomAgent(Agent):
 
-    def __init__(self, upper_bound: int = 1000, lower_bound: int = -1000):
+    def __init__(self, noise: int = 1000):
         """
-        Creates a new random agents that randomly guesses between lower_bound and upper_bound
+        Creates a new random agents that randomly guesses +- noise
 
-        :param upper_bound: Upper bound for a guess
-        :param lower_bound: Lower bound for a guess
+        :param noise: Determines the guessing range
         """
 
-        self.__upper_bound = upper_bound
-        """
-        Upper bound for a guess
-        """
-        self.__lower_bound = lower_bound
+        self.__noise = noise
         """
         Lower bound for a guess
         """
@@ -31,4 +26,4 @@ class RandomAgent(Agent):
         :param multiplier: Multiplier
         :return: Score for this position
         """
-        return randint(self.__lower_bound, self.__upper_bound)
+        return randint(-self.__noise, self.__noise)
