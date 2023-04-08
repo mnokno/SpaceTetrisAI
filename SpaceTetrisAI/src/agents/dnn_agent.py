@@ -29,7 +29,7 @@ class DNNAgent(Agent):
         if next(self.__barin.parameters()).is_cuda:
             input_tensor.cuda()
 
-        return objective_score + self.__barin.forward(input_tensor) * 1000
+        return self.__barin.forward(input_tensor) * 100
 
     def get_barin(self) -> SimpleNet:
         """
