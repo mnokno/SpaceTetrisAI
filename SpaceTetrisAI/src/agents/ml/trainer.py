@@ -9,11 +9,10 @@ from src.environment import *
 from src.agents.ml import *
 
 
-def train_agent(initial_barin: SimpleNet) -> SimpleNet:
+def train_agent(initial_barin: SimpleNet) -> None:
     """
     Trains the given barin
     :param initial_barin: Initial state of the brain
-    :return: Brain after training
     """
     population_size = 100
     parents = 5
@@ -24,9 +23,9 @@ def train_agent(initial_barin: SimpleNet) -> SimpleNet:
     agent_scores: list[int] = []
 
     agents.clear()
-    agents.append(DNNAgent(initial_barin))
+    agents.append(DNNAgent(brain=initial_barin))
     for i in range(population_size - 1):
-        agents.append(DNNAgent(get_mutated_brain(initial_barin)))
+        agents.append(DNNAgent(get_mutated_brain(brain=initial_barin)))
 
     # Trains agents
     for i in range(training_rounds):
@@ -54,9 +53,9 @@ def train_agent(initial_barin: SimpleNet) -> SimpleNet:
 
         agents.clear()
         for x in range(len(top_x_agents)):
-            agents.append(DNNAgent(top_x_agents[x][0].get_barin()))
+            agents.append(DNNAgent(brain=top_x_agents[x][0].get_barin()))
             for _ in range(int(population_size / len(top_x_agents)) - 1):
-                agents.append(DNNAgent(get_mutated_brain(top_x_agents[x][0].get_barin())))
+                agents.append(DNNAgent(brain=get_mutated_brain(top_x_agents[x][0].get_barin())))
 
 
 def get_mutated_brain(brain: SimpleNet) -> SimpleNet:

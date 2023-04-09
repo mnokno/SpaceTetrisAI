@@ -6,12 +6,12 @@ from torch import Tensor
 
 class DNNAgent(Agent):
 
-    def __init__(self, barin: SimpleNet):
+    def __init__(self, brain: SimpleNet = None):
         """
-        Creates a new DNNAgent with the given brain
-        :param barin: Barin for the agent
+        Creates a new DNNAgent with the given brain, if no brain is provided the pretrained brain will be loaded
+        :param brain: Barin for the agent
         """
-        self.__barin: SimpleNet = barin
+        self.__brain: SimpleNet = brain
 
     def score(self, board: [int], left_piece: [int], objective_score: int, multiplier: int) -> int:
         """
@@ -26,14 +26,14 @@ class DNNAgent(Agent):
 
         # convert the board and left piece into a single tensor
         input_tensor = torch.tensor(board + left_piece, dtype=torch.float32).unsqueeze(0)
-        if next(self.__barin.parameters()).is_cuda:
+        if next(self.__brain.parameters()).is_cuda:
             input_tensor.cuda()
 
-        return self.__barin.forward(input_tensor) * 100
+        return self.__brain.forward(input_tensor) * 100
 
     def get_barin(self) -> SimpleNet:
         """
         Getter for agents barin
         :return: Agents brain
         """
-        return self.__barin
+        return self.__brain
