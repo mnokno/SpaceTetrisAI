@@ -15,15 +15,14 @@ def train_agent(initial_barin: SimpleNet) -> SimpleNet:
     :param initial_barin: Initial state of the brain
     :return: Brain after training
     """
-    population_size = 10
+    population_size = 100
     parents = 5
-    training_rounds = 15
-    num_test_game = 10
+    training_rounds = 100
+    num_test_game = 50
 
     agents: list[DNNAgent] = []
     agent_scores: list[int] = []
 
-    # Create initial population
     agents.clear()
     agents.append(DNNAgent(initial_barin))
     for i in range(population_size - 1):
@@ -38,11 +37,13 @@ def train_agent(initial_barin: SimpleNet) -> SimpleNet:
 
         for game_id in range(num_test_game):
             pg: PieceGenerator = PieceGenerator()
+            pg.get_piece(500)
             for agent_id in range(population_size):
-                agent_scores[agent_id] += score_agent(agents[agent_id], Game(pg)) / float(num_test_game)
+                agent_scores[agent_id] += \
+                    score_agent(agents[agent_id], Game(PieceGenerator(history=pg.get_history()))) / float(num_test_game)
 
         agent_scores_tuples = list(zip(agents, agent_scores))
-        sorted_agents = sorted(agent_scores_tuples, key=lambda x: x[1], reverse=True)
+        sorted_agents = sorted(agent_scores_tuples, key=lambda _x: _x[1], reverse=True)
         top_x_agents = sorted_agents[:parents]
 
         print("----------------------------------------------------------------------------------------")
