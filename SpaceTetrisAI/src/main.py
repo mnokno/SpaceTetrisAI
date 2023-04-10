@@ -20,11 +20,13 @@ if __name__ == '__main__':
     agentNN: Agent = NoiseNullAgent(noise=10)
     agentN: Agent = NullAgent()
     agentS: Agent = SmartAgent()
+    agentDNN: Agent = DNNAgent()
 
     agentR_score = 0
     agentNN_score = 0
     agentN_score = 0
     agentS_score = 0
+    agentDNN_score = 0
 
     test_game = 100
     for i in range(test_game):
@@ -35,9 +37,11 @@ if __name__ == '__main__':
         agentNN_score += score_agent(agentNN, Game(PieceGenerator(history=pg.get_history())))
         agentN_score += score_agent(agentN, Game(PieceGenerator(history=pg.get_history())))
         agentS_score += score_agent(agentS, Game(PieceGenerator(history=pg.get_history())))
+        agentDNN_score += score_agent(agentDNN, Game(PieceGenerator(history=pg.get_history())))
 
     print("Average scores over " + str(test_game) + " games")
     print("Random agent:\t\t", float(agentR_score) / float(test_game))
     print("Noise Null agent:\t", float(agentNN_score) / float(test_game))
     print("Null agent:\t\t\t", float(agentN_score) / float(test_game))
     print("Smart agent:\t\t", float(agentS_score) / float(test_game))
+    print("DNN agent:\t\t\t", float(agentDNN_score) / float(test_game))
