@@ -1,9 +1,5 @@
 import copy
-from typing import List
-
 import torch
-
-from src.agents import *
 from src.agents import DNNAgent
 from src.environment import *
 from src.agents.ml import *
