@@ -1,7 +1,7 @@
+import os
 import torch
 from src.agents.agent import Agent
 from src.agents.ml.architectures import SimpleNet
-from torch import Tensor
 
 
 class DNNAgent(Agent):
@@ -11,7 +11,10 @@ class DNNAgent(Agent):
         Creates a new DNNAgent with the given brain, if no brain is provided the pretrained brain will be loaded
         :param brain: Barin for the agent
         """
-        self.__brain: SimpleNet = brain
+        if brain is None:
+            self.__brain = torch.load(os.getcwd() + "\\src\\agents\\ml\\pre_trained.pt")
+        else:
+            self.__brain: SimpleNet = brain
 
     def score(self, board: [int], left_piece: [int], objective_score: int, multiplier: int) -> int:
         """
