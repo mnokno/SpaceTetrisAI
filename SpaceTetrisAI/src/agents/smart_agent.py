@@ -3,7 +3,7 @@ from src.agents.agent import Agent
 
 class SmartAgent(Agent):
 
-    def score(self, board: [int], left_piece: [int], objective_score: int, multiplier: int) -> int:
+    def score(self, board: list[int], left_piece: list[int], objective_score: int, multiplier: int) -> int:
         """
         Scores the given board based on the board itself, other piece and multiple
 
@@ -16,7 +16,7 @@ class SmartAgent(Agent):
         return objective_score - SmartAgent.__get_number_of_neighbouring_empty_blocks(board)
 
     @staticmethod
-    def __get_number_of_neighbouring_empty_blocks(board: [int]) -> int:
+    def __get_number_of_neighbouring_empty_blocks(board: list[int]) -> int:
         """
         Gets the number of neighbouring empty blocks
 

@@ -16,7 +16,7 @@ class DNNAgent(Agent):
         else:
             self.__brain: SimpleNet = brain
 
-    def score(self, board: [int], left_piece: [int], objective_score: int, multiplier: int) -> int:
+    def score(self, board: list[int], left_piece: list[int], objective_score: int, multiplier: int) -> int:
         """
         Scores the given board based on the board itself, other piece and multiple
 

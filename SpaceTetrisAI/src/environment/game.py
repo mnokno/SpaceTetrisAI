@@ -16,7 +16,7 @@ class Game:
         :param piece_generator: Piece generator that will be used for this game
         """
 
-        self.__historicData: [(int, (int, int), (int, int), int, int, int)]
+        self.__historicData: list[tuple[int, tuple[int, int], tuple[int, int], int, int, int]]
         """
         Stores historic data required to backtrack in a stack in the following order
         (board_bitboard, piece_main, piece_alt, lives, score, multiplayer)
@@ -32,12 +32,12 @@ class Game:
         Stores board
         """
 
-        self.__piece_main: (int, int)
+        self.__piece_main: tuple[int, int]
         """
         Stores maks for the main piece (piece_id, piece_rotation)
         """
 
-        self.__piece_alt: (int, int)
+        self.__piece_alt: tuple[int, int]
         """
         Stores mask for the alternative piece (piece_id, piece_rotation)
         """
@@ -145,14 +145,14 @@ class Game:
         """
         return self.__board
 
-    def get_main_piece(self) -> (int, int):
+    def get_main_piece(self) -> tuple[int, int]:
         """
         Getter for main piece
         :return: main piece
         """
         return self.__piece_main
 
-    def get_alt_piece(self) -> (int, int):
+    def get_alt_piece(self) -> tuple[int, int]:
         """
         Getter for alternative piece
         :return: alternative piece

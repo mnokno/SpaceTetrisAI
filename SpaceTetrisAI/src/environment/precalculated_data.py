@@ -3,12 +3,12 @@ class PrecalculatedData:
     Stores precalculated data, improves preference by avoiding repeated calculations curing runtime
     """
 
-    columnBitmasks: [int] = [0] * 5
+    columnBitmasks: list[int] = [0] * 5
     """
     Stores bitmasks for columns
     """
 
-    rowBitmasks: [int] = [0] * 5
+    rowBitmasks: list[int] = [0] * 5
     """
     Stores bitmasks for rows
     """

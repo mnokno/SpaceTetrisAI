@@ -3,7 +3,7 @@ class Piece:
     Collection of utilities regarding game pieces.
     """
 
-    __pieces: [[int]] = [[0] * 4 for _ in range(15)]
+    __pieces: list[list[int]] = [[0] * 4 for _ in range(15)]
     """
     Stores generated piece data
     """
@@ -20,7 +20,7 @@ class Piece:
         return Piece.__pieces[piece_id][rotation]
 
     @staticmethod
-    def get_flat_piece_vector(piece_id: int, rotation: int) -> [int]:
+    def get_flat_piece_vector(piece_id: int, rotation: int) -> list[int]:
         """
         Converts given piece to a flat vector/list.
 
@@ -53,7 +53,7 @@ class Piece:
                 Piece.__pieces[i][j + 1] = Piece.__piece_vector_to_ulong(p)
 
     @staticmethod
-    def __get_piece_vector(i: int) -> [[int]]:
+    def __get_piece_vector(i: int) -> list[list[int]]:
         """
         Returns piece with given id i, 0 <= i <= 14.
 
@@ -109,7 +109,7 @@ class Piece:
             return [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
     @staticmethod
-    def __piece_vector_to_ulong(piece: [[int]]) -> int:
+    def __piece_vector_to_ulong(piece: list[list[int]]) -> int:
         """
         Converts the given piece vector to a bitmask.
 
@@ -124,7 +124,7 @@ class Piece:
         return mask
 
     @staticmethod
-    def __rotate_piece_vector(piece: [[int]]) -> [[int]]:
+    def __rotate_piece_vector(piece: list[list[int]]) -> list[list[int]]:
         """
         Rotates a 3x3 piece vector clockwise.
 

@@ -41,7 +41,7 @@ class Board:
         """
         self.__board |= (piece_mask << (x + y*7))
 
-    def clear_lines(self) -> (int, int):
+    def clear_lines(self) -> tuple[int, int]:
         """
         Clears all vertical and horizontal lines
 
@@ -73,7 +73,7 @@ class Board:
         """
         return self.__board
 
-    def get_flat_board_vector(self) -> [int]:
+    def get_flat_board_vector(self) -> list[int]:
         """
         Gets this board in a flat vector from
         :return: Flat vector from this board

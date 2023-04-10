@@ -8,7 +8,7 @@ class PieceGenerator:
     pieces do not change after backtracking
     """
 
-    def __init__(self, seed: int = None, history: [(int, int)] = None):
+    def __init__(self, seed: int = None, history: list[tuple[int, int]] = None):
         """
         Creates a new random piece generator
         :param seed: Optional parameter, seed to be set to random, WARNING random uses a shared instance so seed
@@ -16,7 +16,7 @@ class PieceGenerator:
         :param history: a history to be used by this piece generator
         """
 
-        self.__history: [(int, int)] = []
+        self.__history: list[tuple[int, int]] = []
         """                               
         Stores previously generated pieces
         """
@@ -27,7 +27,7 @@ class PieceGenerator:
             for e in history:
                 self.__history.append(e)
 
-    def get_piece(self, time_stamp: int) -> (int, int):
+    def get_piece(self, time_stamp: int) -> tuple[int, int]:
         """
         Returns a new piece mask repointing to the given time_stamp
 
@@ -41,7 +41,7 @@ class PieceGenerator:
         if time_stamp < len(self.__history):
             return self.__history[time_stamp]
 
-    def get_history(self) -> [(int, int)]:
+    def get_history(self) -> list[tuple[int, int]]:
         """
         Getter for history
         :return: History stack
