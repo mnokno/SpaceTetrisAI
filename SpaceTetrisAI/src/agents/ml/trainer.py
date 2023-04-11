@@ -1,4 +1,5 @@
 import copy
+import os
 import torch
 from src.agents import DNNAgent
 from src.environment import *
@@ -10,10 +11,13 @@ def train_agent(initial_barin: SimpleNet) -> None:
     Trains the given barin
     :param initial_barin: Initial state of the brain
     """
+    if not os.path.exists(os.getcwd() + "\\checkpoints"):
+        os.makedirs(os.getcwd() + "\\checkpoints")
+
     population_size = 100
     parents = 5
-    training_rounds = 100
-    num_test_game = 50
+    training_rounds = 250
+    num_test_game = 100
 
     agents: list[DNNAgent] = []
     agent_scores: list[int] = []
