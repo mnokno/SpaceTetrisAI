@@ -32,7 +32,7 @@ if __name__ == '__main__':
         agentSR_score += score_agent(agentSR, Game(PieceGenerator(history=pg.get_history())))
         agentH_score += score_agent(agentH, Game(PieceGenerator(history=pg.get_history())))
 
-    print("Average scores over " + str(test_game) + " games")
+    print("Average scores over " + str(test_game) + " games using shallow play")
     print("Random agent:\t\t", float(agentR_score) / float(test_game))
     print("Noise Null agent:\t", float(agentNN_score) / float(test_game))
     print("Null agent:\t\t\t", float(agentN_score) / float(test_game))
@@ -40,3 +40,29 @@ if __name__ == '__main__':
     print("DNN agent:\t\t\t", float(agentDNN_score) / float(test_game))
     print("Smarter agent:\t\t", float(agentSR_score) / float(test_game))
     print("Hybrid agent:\t\t", float(agentH_score) / float(test_game))
+
+    agentR_score = 0
+    agentNN_score = 0
+    agentN_score = 0
+    agentS_score = 0
+    agentSR_score = 0
+
+    test_game = 250
+    for i in range(test_game):
+        pg: PieceGenerator = PieceGenerator(i)
+        pg.get_piece(1500)
+
+        agentR_score += score_agent(agentR, Game(PieceGenerator(history=pg.get_history())), deep_score=True, max_steps=1500)
+        agentNN_score += score_agent(agentNN, Game(PieceGenerator(history=pg.get_history())), deep_score=True, max_steps=1500)
+        agentN_score += score_agent(agentN, Game(PieceGenerator(history=pg.get_history())), deep_score=True, max_steps=1500)
+        agentS_score += score_agent(agentS, Game(PieceGenerator(history=pg.get_history())), deep_score=True, max_steps=1500)
+        agentSR_score += score_agent(agentSR, Game(PieceGenerator(history=pg.get_history())), deep_score=True, max_steps=1500)
+
+    print("Average scores over " + str(test_game) + " games using deep play")
+    print("Random agent:\t\t", float(agentR_score) / float(test_game))
+    print("Noise Null agent:\t", float(agentNN_score) / float(test_game))
+    print("Null agent:\t\t\t", float(agentN_score) / float(test_game))
+    print("Smart agent:\t\t", float(agentS_score) / float(test_game))
+    print("DNN agent:\t\t\t TO SLOW")
+    print("Smarter agent:\t\t", float(agentSR_score) / float(test_game))
+    print("Hybrid agent:\t\t TO SLOW")
