@@ -27,10 +27,10 @@ class SmarterAgent(Agent):
 
         # Adds boarder diff
         for i in range(5):
-            cell_dif[i] += 1
-            cell_dif[20 + i] += 1
-            cell_dif[i * 5] += 1
-            cell_dif[i * 5 + 4] += 1
+            cell_dif[i] += 2
+            cell_dif[20 + i] += 2
+            cell_dif[i * 5] += 2
+            cell_dif[i * 5 + 4] += 2
 
         # Add neighbour diff
         offsets = [1, -1, 5, -5]
