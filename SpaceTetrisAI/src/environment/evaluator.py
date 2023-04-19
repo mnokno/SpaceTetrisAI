@@ -26,9 +26,9 @@ def score_agent(agent: Agent, game: Game, max_steps: int = 500, deep_score: bool
         bets_play.rotation = 0
         bets_play.main_piece = True
 
-        bets_play_main = score_current_piece(agent, game, True, shallow=deep_score)
+        bets_play_main = score_current_piece(agent, game, True, shallow=(not deep_score))
         game.swap_pieces()
-        bets_play_alt = score_current_piece(agent, game, False, shallow=deep_score)
+        bets_play_alt = score_current_piece(agent, game, False, shallow=(not deep_score))
         game.swap_pieces()
         if bets_play_alt.score > bets_play_main.score:
             bets_play = bets_play_alt
