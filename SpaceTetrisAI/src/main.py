@@ -3,6 +3,9 @@ from agents import *
 
 
 if __name__ == '__main__':
+    """
+    WARNING this code will take 2-3h to run depending on your hardware
+    """
     agentR: Agent = RandomAgent()
     agentNN: Agent = NoiseNullAgent(noise=10)
     agentN: Agent = NullAgent()
