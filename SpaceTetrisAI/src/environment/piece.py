@@ -41,6 +41,21 @@ class Piece:
         return piece_flat
 
     @staticmethod
+    def get_empty_flat_piece_vector() -> list[int]:
+        """
+        Returns vector for empty piece
+
+        :return: Flat vector for empty piece
+        """
+        piece_flat = []
+
+        for x in range(3):
+            for y in range(3):
+                piece_flat.append(0)
+
+        return piece_flat
+
+    @staticmethod
     def init() -> None:
         """
         Generates piece data, should be called before any other piece utilitea are used.
